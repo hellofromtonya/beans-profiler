@@ -1,9 +1,11 @@
 
-=================
-The following functions were invoked <?php echo number_format( $this->sample_size ); ?> times during this micro profiler process.
+-------------------------
+MICRO PROFILER REPORT:
+-------------------------
 
-	1. The 'time' column shows the function's average execution time in milliseconds (ms).
-
+PHP version:        <?php echo phpversion() . "\n"; ?>
+Sample Size:        <?php echo number_format( $this->sample_size ); ?> (per function)
+Time Increments:    milliseconds, where 1 ms equals 0.0001 second.
 
  --------------------------------   -------------
 | Name                             | Avg Time     |
@@ -15,3 +17,8 @@ foreach ( $this->profiles as $name => $profile ) {
 }
 ?>
  --------------------------------   -------------
+
+NOTES:
+
+1. The functions were invoked/exercised <?php echo number_format( $this->sample_size ); ?> times during this micro profiler process.
+2. The 'time' column shows the function's average execution time.
