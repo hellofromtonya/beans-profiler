@@ -9,6 +9,11 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Beans\\Profiler\\CLI\\": "cli/"
+    }
+  },
   "require": {
     "php": "^5.6|^7"
   },

@@ -15,10 +15,10 @@
 
 	<testsuites>
 		<testsuite name="micro-profiler">
-			<directory suffix=".php">.</directory>
+			<directory suffix="MicroProfiler.php">.</directory>
 		</testsuite>
 		<testsuite name="baseline-micro-profiler">
-			<directory suffix=".php">.</directory>
+			<directory suffix="MicroProfiler.php">.</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>

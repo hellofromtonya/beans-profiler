@@ -14,11 +14,11 @@ namespace Beans\Profiler\CLI;
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile_beans_add_smart_action( Micro_Profiler $profiler ) {
+function profile_beans_add_smart_action( MicroProfiler $profiler ) {
 	$profiler->start_segment( 'beans_add_smart_action' );
 	beans_add_smart_action( 'beans_header', __FUNCTION__, 15, 3 );
 	$profiler->stop_segment( 'beans_add_smart_action' );
@@ -31,11 +31,11 @@ function profile_beans_add_smart_action( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile_beans_modify_action_priority( Micro_Profiler $profiler ) {
+function profile_beans_modify_action_priority( MicroProfiler $profiler ) {
 	$id = __FUNCTION__;
 	beans_add_smart_action( 'beans_header', $id, 15, 3 );
 
@@ -51,11 +51,11 @@ function profile_beans_modify_action_priority( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile_beans_replace_action_callback( Micro_Profiler $profiler ) {
+function profile_beans_replace_action_callback( MicroProfiler $profiler ) {
 	$id = __FUNCTION__;
 	beans_add_smart_action( 'beans_header', $id, 15, 3 );
 
@@ -71,11 +71,11 @@ function profile_beans_replace_action_callback( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile_beans_remove_action( Micro_Profiler $profiler ) {
+function profile_beans_remove_action( MicroProfiler $profiler ) {
 	$id = __FUNCTION__;
 	beans_add_smart_action( 'beans_header', $id, 15, 3 );
 
@@ -89,11 +89,11 @@ function profile_beans_remove_action( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile_beans_reset_action( Micro_Profiler $profiler ) {
+function profile_beans_reset_action( MicroProfiler $profiler ) {
 	$id = __FUNCTION__;
 	beans_add_smart_action( 'beans_header', $id, 15, 3 );
 	beans_replace_action_callback( $id, 'beans_loop_query_args_base' );
@@ -110,11 +110,11 @@ function profile_beans_reset_action( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile__beans_get_action( Micro_Profiler $profiler ) {
+function profile__beans_get_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
 	$action                                                 = array(
 		'hook'     => 'beans_post_body',
@@ -136,11 +136,11 @@ function profile__beans_get_action( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile__beans_set_action( Micro_Profiler $profiler ) {
+function profile__beans_set_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
 	$action = array(
 		'hook'     => 'beans_post_body',
@@ -161,11 +161,11 @@ function profile__beans_set_action( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile__beans_unset_action( Micro_Profiler $profiler ) {
+function profile__beans_unset_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
 	$action                                                 = array(
 		'hook'     => 'beans_post_body',
@@ -187,11 +187,11 @@ function profile__beans_unset_action( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile__beans_merge_action( Micro_Profiler $profiler ) {
+function profile__beans_merge_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
 	$action                                                 = array(
 		'hook'     => 'beans_post_body',
@@ -214,11 +214,11 @@ function profile__beans_merge_action( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile__beans_get_current_action( Micro_Profiler $profiler ) {
+function profile__beans_get_current_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
 	$action                                                 = array(
 		'hook'     => 'beans_post_body',

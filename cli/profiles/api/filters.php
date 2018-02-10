@@ -14,11 +14,11 @@ namespace Beans\Profiler\CLI;
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile_beans_add_filter( Micro_Profiler $profiler ) {
+function profile_beans_add_filter( MicroProfiler $profiler ) {
 	$profiler->start_segment( 'beans_add_filter' );
 	beans_add_filter( 'beans_loop_query_args', 'beans_loop_query_args_main', 20, 1 );
 	$profiler->stop_segment( 'beans_add_filter' );
@@ -31,11 +31,11 @@ function profile_beans_add_filter( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile_beans_apply_filters( Micro_Profiler $profiler ) {
+function profile_beans_apply_filters( MicroProfiler $profiler ) {
 	add_filter( 'beans_loop_query_args', 'beans_loop_query_args_base' );
 	add_filter( 'beans_loop_query_args[_main]', 'beans_loop_query_args_main' );
 
@@ -52,11 +52,11 @@ function profile_beans_apply_filters( Micro_Profiler $profiler ) {
  *
  * @since 1.5.0
  *
- * @param Micro_Profiler $profiler Instance of the Micro Profiler.
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
  *
  * @return void
  */
-function profile_beans_has_filters( Micro_Profiler $profiler ) {
+function profile_beans_has_filters( MicroProfiler $profiler ) {
 	add_filter( 'beans_loop_query_args[_first][_second]', 'beans_loop_query_args_main' );
 
 	$profiler->start_segment( 'beans_has_filters' );
