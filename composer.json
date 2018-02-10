@@ -1,0 +1,25 @@
+{
+  "name": "beans/beans-profiler",
+  "description": "Beans framework's Micro Profiler.",
+  "license": "GPL-2.0+",
+  "homepage": "http://www.getbeans.io/",
+  "support": {
+    "issues": "https://github.com/GetBeans/Beans/issues",
+    "source": "https://github.com/GetBeans/Beans"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^5.6|^7"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.7.9"
+  },
+  "config": {
+    "sort-order": true
+  },
+  "scripts": {
+    "run-profiler":  "\"vendor/bin/phpunit\" --testsuite micro-profiler --configuration cli/phpunit.xml.dist --color=always",
+    "run-baseline-profiler":  "\"vendor/bin/phpunit\" --testsuite baseline-micro-profiler --configuration cli/phpunit.xml.dist --color=always"
+  }
+}
