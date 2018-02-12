@@ -116,13 +116,14 @@ function profile_beans_reset_action( MicroProfiler $profiler ) {
  */
 function profile__beans_get_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
-	$action                                                 = array(
+	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
 		'priority' => 5,
 		'args'     => 1,
 	);
-	$_beans_registered_actions['added']['beans_post_image'] = wp_json_encode( $action );
+
+	$_beans_registered_actions['added']['beans_post_image'] = 'tm-beans' === BEANS_PROFILER_THEME ? $action : json_encode( $action );
 
 	$profiler->start_segment( '_beans_get_action' );
 	_beans_get_action( 'beans_post_image', 'added' );
@@ -149,6 +150,8 @@ function profile__beans_set_action( MicroProfiler $profiler ) {
 		'args'     => 1,
 	);
 
+	$_beans_registered_actions['added']['beans_post_image'] = 'tm-beans' === BEANS_PROFILER_THEME ? $action : json_encode( $action );
+
 	$profiler->start_segment( '_beans_set_action' );
 	_beans_set_action( 'beans_post_image', $action, 'added', true );
 	$profiler->stop_segment( '_beans_set_action' );
@@ -167,13 +170,18 @@ function profile__beans_set_action( MicroProfiler $profiler ) {
  */
 function profile__beans_unset_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
-	$action                                                 = array(
+	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
 		'priority' => 5,
 		'args'     => 1,
 	);
-	$_beans_registered_actions['added']['beans_post_image'] = wp_json_encode( $action );
+
+	if ( 'tm-beans' !== BEANS_PROFILER_THEME ) {
+		$action = json_encode( $action );
+	}
+
+	$_beans_registered_actions['added']['beans_post_image'] = $action;
 
 	$profiler->start_segment( '_beans_unset_action' );
 	_beans_unset_action( 'beans_post_image', 'added' );
@@ -193,13 +201,14 @@ function profile__beans_unset_action( MicroProfiler $profiler ) {
  */
 function profile__beans_merge_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
-	$action                                                 = array(
+	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
 		'priority' => 5,
 		'args'     => 1,
 	);
-	$_beans_registered_actions['added']['beans_post_image'] = wp_json_encode( $action );
+
+	$_beans_registered_actions['added']['beans_post_image'] = 'tm-beans' === BEANS_PROFILER_THEME ? $action : json_encode( $action );
 
 	$action['priority'] = 10;
 	$profiler->start_segment( '_beans_merge_action' );
@@ -220,13 +229,14 @@ function profile__beans_merge_action( MicroProfiler $profiler ) {
  */
 function profile__beans_get_current_action( MicroProfiler $profiler ) {
 	global $_beans_registered_actions;
-	$action                                                 = array(
+	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
 		'priority' => 5,
 		'args'     => 1,
 	);
-	$_beans_registered_actions['added']['beans_post_image'] = wp_json_encode( $action );
+
+	$_beans_registered_actions['added']['beans_post_image'] = 'tm-beans' === BEANS_PROFILER_THEME ? $action : json_encode( $action );
 
 	$profiler->start_segment( '_beans_get_current_action' );
 	_beans_get_current_action( 'beans_post_image' );

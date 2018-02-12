@@ -5,7 +5,7 @@ MICRO PROFILER REPORT:
 
 PHP version:        <?php echo phpversion() . "\n"; ?>
 Sample Size:        <?php echo number_format( $this->sample_size ); ?> (per function)
-Time Increments:    milliseconds, where 1 ms equals 0.0001 second.
+Time Increments:    milliseconds, where 1 ms equals 0.001 second.
 
  --------------------------------   -------------
 | Name                             | Avg Time     |

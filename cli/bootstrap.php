@@ -10,6 +10,18 @@
  * @group       micro-profiler
  */
 
+/**
+ * Profile memory usage for the Beans Actions API Container, comparing
+ * storing actions into the container as an array vs. an encoded string.
+ *
+ * Test parameters are:
+ *
+ * 1. Cycle 1,000,000 times.
+ * 2. Added the action into the "added" container.
+ * 3. Test both scenarios.
+ * 4. Compare results.
+ */
+
 // Define the absolute 'wp-content' path.
 define( 'WP_CONTENT_DIR', dirname( dirname( dirname( getcwd() ) ) ) . '/wp-content/' ); // @codingStandardsIgnoreLine.
 
