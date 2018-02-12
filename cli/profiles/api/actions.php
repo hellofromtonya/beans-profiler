@@ -115,7 +115,6 @@ function profile_beans_reset_action( MicroProfiler $profiler ) {
  * @return void
  */
 function profile__beans_get_action( MicroProfiler $profiler ) {
-	global $_beans_registered_actions;
 	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
@@ -123,13 +122,13 @@ function profile__beans_get_action( MicroProfiler $profiler ) {
 		'args'     => 1,
 	);
 
-	$_beans_registered_actions['added']['beans_post_image'] = 'tm-beans' === BEANS_PROFILER_THEME ? $action : json_encode( $action );
+	_store_in_actions_container( 'added', 'beans_post_image', $action );
 
 	$profiler->start_segment( '_beans_get_action' );
 	_beans_get_action( 'beans_post_image', 'added' );
 	$profiler->stop_segment( '_beans_get_action' );
 
-	$_beans_registered_actions['added'] = array();
+	_beans_unset_action( 'beans_post_image', 'added' );
 }
 
 /**
@@ -142,7 +141,6 @@ function profile__beans_get_action( MicroProfiler $profiler ) {
  * @return void
  */
 function profile__beans_set_action( MicroProfiler $profiler ) {
-	global $_beans_registered_actions;
 	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
@@ -150,13 +148,13 @@ function profile__beans_set_action( MicroProfiler $profiler ) {
 		'args'     => 1,
 	);
 
-	$_beans_registered_actions['added']['beans_post_image'] = 'tm-beans' === BEANS_PROFILER_THEME ? $action : json_encode( $action );
+	_store_in_actions_container( 'added', 'beans_post_image', $action );
 
 	$profiler->start_segment( '_beans_set_action' );
 	_beans_set_action( 'beans_post_image', $action, 'added', true );
 	$profiler->stop_segment( '_beans_set_action' );
 
-	$_beans_registered_actions['added'] = array();
+	_beans_unset_action( 'beans_post_image', 'added' );
 }
 
 /**
@@ -169,7 +167,6 @@ function profile__beans_set_action( MicroProfiler $profiler ) {
  * @return void
  */
 function profile__beans_unset_action( MicroProfiler $profiler ) {
-	global $_beans_registered_actions;
 	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
@@ -177,17 +174,11 @@ function profile__beans_unset_action( MicroProfiler $profiler ) {
 		'args'     => 1,
 	);
 
-	if ( 'tm-beans' !== BEANS_PROFILER_THEME ) {
-		$action = json_encode( $action );
-	}
-
-	$_beans_registered_actions['added']['beans_post_image'] = $action;
+	_store_in_actions_container( 'added', 'beans_post_image', $action );
 
 	$profiler->start_segment( '_beans_unset_action' );
 	_beans_unset_action( 'beans_post_image', 'added' );
 	$profiler->stop_segment( '_beans_unset_action' );
-
-	$_beans_registered_actions['added'] = array();
 }
 
 /**
@@ -200,7 +191,6 @@ function profile__beans_unset_action( MicroProfiler $profiler ) {
  * @return void
  */
 function profile__beans_merge_action( MicroProfiler $profiler ) {
-	global $_beans_registered_actions;
 	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
@@ -208,14 +198,14 @@ function profile__beans_merge_action( MicroProfiler $profiler ) {
 		'args'     => 1,
 	);
 
-	$_beans_registered_actions['added']['beans_post_image'] = 'tm-beans' === BEANS_PROFILER_THEME ? $action : json_encode( $action );
+	_store_in_actions_container( 'added', 'beans_post_image', $action );
 
 	$action['priority'] = 10;
 	$profiler->start_segment( '_beans_merge_action' );
 	_beans_merge_action( 'beans_post_image', $action, 'added' );
 	$profiler->stop_segment( '_beans_merge_action' );
 
-	$_beans_registered_actions['added'] = array();
+	_beans_unset_action( 'beans_post_image', 'added' );
 }
 
 /**
@@ -228,7 +218,6 @@ function profile__beans_merge_action( MicroProfiler $profiler ) {
  * @return void
  */
 function profile__beans_get_current_action( MicroProfiler $profiler ) {
-	global $_beans_registered_actions;
 	$action = array(
 		'hook'     => 'beans_post_body',
 		'callback' => 'beans_post_image',
@@ -236,11 +225,32 @@ function profile__beans_get_current_action( MicroProfiler $profiler ) {
 		'args'     => 1,
 	);
 
-	$_beans_registered_actions['added']['beans_post_image'] = 'tm-beans' === BEANS_PROFILER_THEME ? $action : json_encode( $action );
+	_store_in_actions_container( 'added', 'beans_post_image', $action );
 
 	$profiler->start_segment( '_beans_get_current_action' );
 	_beans_get_current_action( 'beans_post_image' );
 	$profiler->stop_segment( '_beans_get_current_action' );
 
-	$_beans_registered_actions['added'] = array();
+	_beans_unset_action( 'beans_post_image', 'added' );
+}
+
+/**
+ * Store the action in the container.
+ *
+ * @since 1.0.0
+ *
+ * @param string $status The container status key.
+ * @param string $id     The Beans ID.
+ * @param array  $action The action to be stored.
+ *
+ * @return void
+ */
+function _store_in_actions_container( $status, $id, array $action ) {
+	global $_beans_registered_actions;
+
+	if ( 'beans-v1.4.0' === BEANS_PROFILER_THEME ) {
+		$action = json_encode( $action );
+	}
+
+	$_beans_registered_actions[ $status ][ $id ] = $action;
 }
