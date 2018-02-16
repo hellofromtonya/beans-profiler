@@ -36,6 +36,7 @@ return array(
 		'beans_add_filter'              => __NAMESPACE__ . '\profile_beans_add_filter',
 		'beans_apply_filters'           => __NAMESPACE__ . '\profile_beans_apply_filters',
 		'beans_has_filters'             => __NAMESPACE__ . '\profile_beans_has_filters',
-//		'beans_edit_image'              => __NAMESPACE__ . '\profile_beans_edit_image',
+//		'beans_edit_image FULL'              => __NAMESPACE__ . '\profile_beans_edit_image_full',
+		'beans_edit_image EXISTING'     => __NAMESPACE__ . '\profile_beans_edit_image_existing',
 	),
 );
