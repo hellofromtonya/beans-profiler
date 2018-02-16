@@ -1,1 +1,1 @@
-{"_beans_get_action":0.010366088867187,"_beans_set_action":0.004817236328125,"_beans_unset_action":0.0094895263671875,"_beans_merge_action":0.01386875,"_beans_get_current_action":0.015866552734375,"beans_add_smart_action":0.021761279296875,"beans_modify_action_priority":0.041197680664062,"beans_replace_action_callback":0.0614869140625,"beans_remove_action":0.015880297851562,"beans_reset_action":0.041024267578125,"beans_add_filter":0.0076380615234375,"beans_apply_filters":0.041633837890625,"beans_has_filters":0.026085278320312}
+{"beans_edit_image":37.316669921875}

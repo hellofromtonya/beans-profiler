@@ -122,6 +122,14 @@ class MicroProfiler extends WP_UnitTestCase {
 	 * @return void
 	 */
 	protected function run_stats() {
+		if ( 'tm-beans' !== BEANS_PROFILER_THEME ) {
+			foreach ( $this->profiles as $name => $profile ) {
+				$profile->run_stats( 0 );
+			}
+
+			return;
+		}
+
 		$baseline_results = $this->logger->get_baseline_results();
 
 		foreach ( $this->profiles as $name => $profile ) {

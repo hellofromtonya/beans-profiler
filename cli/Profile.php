@@ -97,7 +97,7 @@ class Profile {
 		$this->time_difference = $this->avg_time - $baseline_avg_time;
 
 		$this->total_times = 0.0;
-		$this->sample_size    = 0.0;
+		$this->sample_size = 0.0;
 	}
 
 	/**

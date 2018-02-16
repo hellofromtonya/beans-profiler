@@ -69,7 +69,8 @@ function beans_autoload_profiles() {
 	$files = array(
 		'profiles/api/actions.php',
 		'profiles/api/filters.php',
-		'stubs/functions.php',
+		'profiles/api/image.php',
+		'fixtures/functions.php',
 	);
 
 	foreach ( $files as $file ) {
