@@ -23,14 +23,14 @@
  */
 
 // Define the absolute 'wp-content' path.
-define( 'WP_CONTENT_DIR', dirname( dirname( dirname( getcwd() ) ) ) . '/wp-content/' ); // @codingStandardsIgnoreLine.
+define( 'WP_CONTENT_DIR', dirname( dirname( dirname( getcwd() ) ) ) . '/wp-content/' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- Our tests need to define this constant.
 
 if ( ! file_exists( WP_CONTENT_DIR ) ) {
-	trigger_error( 'Unable to run the micro-profiler, because the wp-content folder does not exist.', E_USER_ERROR );  // @codingStandardsIgnoreLine.
+	trigger_error( 'Unable to run the micro-profiler, because the wp-content folder does not exist.', E_USER_ERROR );  // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- Our tests need to define this constant.
 }
 
 if ( ! defined( 'WP_PLUGIN_DIR' ) ) {
-	define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . 'plugins/' ); // @codingStandardsIgnoreLine.
+	define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . 'plugins/' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- When this constant is not already defined, we define it here. It's a valid use case for our testing suite.
 }
 
 /**
@@ -69,7 +69,10 @@ function beans_autoload_profiles() {
 	$files = array(
 		'profiles/api/actions.php',
 		'profiles/api/filters.php',
+		'profiles/api/html.php',
 		'profiles/api/image.php',
+		'profiles/api/layout.php',
+		'profiles/api/post-meta.php',
 		'fixtures/functions.php',
 	);
 
@@ -80,9 +83,6 @@ function beans_autoload_profiles() {
 
 // Find the WP tests suite directory.
 $beans_tests_dir = beans_get_wp_tests_dir();
-
-// Load up the profiler files.
-beans_autoload_profiles();
 
 // Give access to tests_add_filter() function.
 require_once $beans_tests_dir . '/includes/functions.php';
@@ -96,6 +96,9 @@ tests_add_filter( 'setup_theme', function() {
 
 	$theme_name = 'baseline-micro-profiler' === $argv[2] ? 'beans-v1.4.0' : 'tm-beans';
 	define( 'BEANS_PROFILER_THEME', $theme_name );
+
+	// Load up the profiler files.
+	beans_autoload_profiles();
 
 	register_theme_directory( WP_CONTENT_DIR . 'themes' );
 	switch_theme( $theme_name );

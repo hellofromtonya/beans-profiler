@@ -61,6 +61,8 @@ class MicroProfiler extends WP_UnitTestCase {
 	public function test_run_micro_profiler() {
 		$index = 0;
 
+		do_action( 'beans_profiler_setup_tasks' );
+
 		do {
 
 			// Invoke each of the registered functions to profile.
@@ -75,6 +77,8 @@ class MicroProfiler extends WP_UnitTestCase {
 		$this->logger->print_summary( $this->profiles );
 
 		$this->assertTrue( true );
+
+		do_action( 'beans_profiler_cleanup_tasks' );
 	}
 
 	/**

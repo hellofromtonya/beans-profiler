@@ -10,6 +10,15 @@
 namespace Beans\Profiler\CLI;
 
 /**
+ * Setup the tasks before we run the Profiler.
+ */
+add_action( 'beans_profiler_setup_tasks', function() {
+	add_action( 'beans_profiler_actions_render_test', function() {
+		echo '<!-- beans_profiler_actions_render_test fired! -->';
+	} );
+} );
+
+/**
  * Profile beans_add_smart_action().
  *
  * @since 1.5.0
@@ -232,6 +241,21 @@ function profile__beans_get_current_action( MicroProfiler $profiler ) {
 	$profiler->stop_segment( '_beans_get_current_action' );
 
 	_beans_unset_action( 'beans_post_image', 'added' );
+}
+
+/**
+ * Profile _beans_render_action().
+ *
+ * @since 1.5.0
+ *
+ * @param MicroProfiler $profiler Instance of the Micro Profiler.
+ *
+ * @return void
+ */
+function profile__beans_render_action( MicroProfiler $profiler ) {
+	$profiler->start_segment( '_beans_render_action' );
+	_beans_render_action( 'beans_profiler_actions_render_test', array( 'class' => 'profiler-test' ) );
+	$profiler->stop_segment( '_beans_render_action' );
 }
 
 /**

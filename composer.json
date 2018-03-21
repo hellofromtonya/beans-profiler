@@ -25,6 +25,10 @@
   },
   "scripts": {
     "run-profiler":  "\"vendor/bin/phpunit\" --testsuite micro-profiler --configuration cli/phpunit.xml.dist --color=always",
-    "run-baseline-profiler":  "\"vendor/bin/phpunit\" --testsuite baseline-micro-profiler --configuration cli/phpunit.xml.dist --color=always"
+    "run-baseline-profiler":  "\"vendor/bin/phpunit\" --testsuite baseline-micro-profiler --configuration cli/phpunit.xml.dist --color=always",
+    "run-profilers": [
+      "@run-baseline-profiler",
+      "@run-profiler"
+    ]
   }
 }
